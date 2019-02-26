@@ -14,8 +14,7 @@ class LoggingMixin(BaseLoggingMixin):
         if self.log['status_code'] == 200:
             logstash_logger.info('Success response', extra=self.log)
         else:
-            error_trace = self.log.pop('errors', None)
-            logstash_logger.exception('Error response', exc_info=error_trace, extra=self.log)
+            logstash_logger.exception('Error response', extra=self.log)
 
 
 class LoggingErrorsMixin(LoggingMixin):
