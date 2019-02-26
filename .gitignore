@@ -92,7 +92,7 @@ venv.bak/
 
 # Spyder project settings
 .spyderproject
-.spyproject
+.spyprojectgit@github.com:singhravi1/drf-tracking-logstash.git
 
 # Rope project settings
 .ropeproject
