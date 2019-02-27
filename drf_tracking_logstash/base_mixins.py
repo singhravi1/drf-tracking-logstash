@@ -35,7 +35,7 @@ class BaseLoggingMixin(object):
             data = self.request.data.dict()
         except AttributeError:
             data = self.request.data
-        self.log['data'] = json.dumps(self._clean_data(data))
+        self.log['data'] = self._clean_data(data)
 
     def handle_exception(self, exc):
         response = super(BaseLoggingMixin, self).handle_exception(exc)
@@ -64,10 +64,10 @@ class BaseLoggingMixin(object):
                     'host': request.get_host(),
                     'method': request.method,
                     'user_agent': request.META['HTTP_USER_AGENT'],
-                    'query_params': json.dumps(self._clean_data(request.query_params.dict())),
+                    'query_params': self._clean_data(request.query_params.dict()),
                     'user': self._get_user(request),
                     'response_ms': self._get_response_ms(),
-                    'response': json.dumps(self._clean_data(rendered_content)),
+                    'response': self._clean_data(rendered_content),
                     'status_code': response.data['status']['code'],
                 }
             )
